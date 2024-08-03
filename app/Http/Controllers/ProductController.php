@@ -19,6 +19,7 @@ class ProductController extends Controller
     {
         $data = Product::query()->with(['category'])->latest('id')->get();
         return view(self::PATH_VIEW.__FUNCTION__, compact('data'));
+       
     }
 
     /**

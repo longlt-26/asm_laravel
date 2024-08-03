@@ -22,8 +22,8 @@
                         <span class="wishlist_quantity">3</span>
                     </div>
                     <div class="mini_cart_wrapper">
-                        <a href="javascript:void(0)"><span class="lnr lnr-cart"></span>My Cart </a>
-                        <span class="cart_quantity">2</span>
+                        <a href="{{ route('cart.view') }}"><span class="lnr lnr-cart"></span>My Cart </a>
+                        <span class="cart_quantity">{{ $cart->totalQuantity  }}</span>
                     </div>
                 </div>
 

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+*/  
 Route::prefix('admin')->as('admin.')->group(function() {
     Route::get('/', function() {
         return view('admin.dashboard');
@@ -24,3 +26,6 @@ Route::prefix('admin')->as('admin.')->group(function() {
     Route::resource('products', ProductController::class);
 
 });
+
+
+

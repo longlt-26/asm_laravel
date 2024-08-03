@@ -72,8 +72,8 @@
 
                         </div>
                         <div class="price_box">
-                            <span class="current_price">{{ $data->price_sale }}</span>
-                            <span class="old_price">{{ $data->price }}</span>
+                            <span class="current_price">{{ $data->price_sale }}VND</span>
+                            <span class="old_price">{{ $data->price }}VND</span>
 
                         </div>
                         <div class="product_desc">
@@ -81,18 +81,20 @@
                         </div>
                         <div class="product_variant color">
                             <h3>Available Options</h3>
-                            <label>Size</label>
-                            <ul>
-                                <li class="">34<a href="#"></a></li>
-                                <li class="">35<a href="#"></a></li>
-                                <li class="">36<a href="#"></a></li>
-                                <li class="">37<a href="#"></a></li>
-                            </ul>
+                            <label for="size">Size</label>
+                            <select id="size" name="size">
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                            </select>
                         </div>
                         <div class="product_variant quantity">
+                           <form action="{{ route('cart.add',$data->id) }}" method="GET">
                             <label>quantity</label>
-                            <input min="1" max="100" value="1" type="number">
-                            <button class="button" type="submit">add to cart</button>
+                            <input min="1" max="100" value="1" type="number" name="quantity">
+                            <button class="button" type="submit"><a href="{{ route('cart.add', $data->id) }}">Add To Cart</a></button>
+                           </form>
 
                         </div>
                         <div class=" product_d_action">

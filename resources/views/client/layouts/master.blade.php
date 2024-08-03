@@ -63,7 +63,7 @@
         <!--header middel end-->
         
         <!--mini cart-->
-        <div class="mini_cart">
+        {{-- <div class="mini_cart">
             <div class="cart_close">
                 <div class="cart_text">
                     <h3>cart</h3>
@@ -92,7 +92,7 @@
                     <a href="#"><img src="{{ asset('theme/client/assets/img/s-product/product2.jpg')}}" alt=""></a>
                 </div>
                 <div class="cart_info">
-                    <a href="#">Koss Porta Pro On Ear Headphones </a>
+                    <a href="#">{{ $item->name }} </a>
                     <span class="quantity">Qty: 1</span>
                     <span class="price_cart">$69.00</span>
                 </div>
@@ -121,7 +121,7 @@
 
             </div>
 
-        </div>
+        </div> --}}
         <!--mini cart end-->
 
         <!--header bottom satrt-->
@@ -143,8 +143,10 @@
     </header>
     <!--header area end-->
 
-
+  
    @yield('content')
+   
+
     <!--footer area start-->
     <footer class="footer_widgets">
       @include('client.layouts.footer')

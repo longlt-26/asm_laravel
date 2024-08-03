@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
+use App\Models\Cart;
 use App\Models\Home;
 use App\Http\Requests\StoreHomeRequest;
 use App\Http\Requests\UpdateHomeRequest;
 use App\Models\Product;
+use Illuminate\Support\Facades\Mail;
+
 
 class HomeController extends Controller
 {
@@ -15,7 +19,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        $banners = Banner::orderBy('created_at','desc')->limit(2)->get();
+        $products = Product::all(); // Hoặc bất kỳ dữ liệu nào bạn muốn lấy
+        return view('client.index', compact('products', 'banners')); // Truyền biến $products đến
     }
 
     /**
@@ -39,8 +45,8 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        
-        $data=Product::query()->findOrFail($id);
+
+         $data=Product::query()->findOrFail($id);
         return view(self::PATH_VIEW.__FUNCTION__, compact('data'));
     }
 
@@ -66,5 +72,13 @@ class HomeController extends Controller
     public function destroy(Home $home)
     {
         //
+    }
+    public function testEmail()
+    {
+        $name = 'LE Trong Long';
+        Mail::send('email.test',compact('name'), function($email) use($name){
+            $email->subject('AUTIMA');
+            $email->to('letronglong26012004@gmail.com',$name);
+        });
     }
 }

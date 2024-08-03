@@ -48,7 +48,10 @@ class BannerController extends Controller
      * Display the specified resource.
      */
     public function show(Banner $banner)
-    {
+    
+    {   
+        
+
         return view(self::PATH_VIEW . __FUNCTION__, compact('banner'));
     }
 

@@ -12,19 +12,25 @@
                          <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
                      </div>
                      <div class="Offcanvas_menu_wrapper">
- 
+
                          <div class="canvas_close">
                              <a href="#"><i class="ion-android-close"></i></a>
                          </div>
- 
- 
+
+
                          <div class="top_right text-end">
                              <ul>
-                                 <li class="top_links"><a href="#"><i class="ion-android-person"></i> My Account<i class="ion-ios-arrow-down"></i></a>
+                                 <li class="top_links">
+                                  
+                                    @if (Auth::check())
+                                    <a href=""><i class="ion-android-person"></i> {{ Auth::user()->name }}<i class="ion-ios-arrow-down"></i></a>  
+                                  @else
+                                  <a href="{{ route('login') }}"><i class="ion-android-person"></i> Login<i class="ion-ios-arrow-down"></i></a>
+                                  @endif
                                      <ul class="dropdown_links">
                                          <li><a href="{{ asset('theme/client/checkout.html')}}">Checkout </a></li>
                                          <li><a href="{{ asset('theme/client/my-account.html')}}">My Account </a></li>
-                                         <li><a href="{{ asset('theme/client/cart.html')}}">Shopping Cart</a></li>
+                                         <li><a href="{{ route('cart.view') }}">Shopping Cart</a></li>
                                          <li><a href="{{ asset('theme/client/wishlist.html')}}">Wishlist</a></li>
                                      </ul>
                                  </li>
@@ -41,8 +47,8 @@
                                          <li><a href="#">INR – India Rupee</a></li>
                                      </ul>
                                  </li>
- 
- 
+
+
                              </ul>
                          </div>
                          <div class="Offcanvas_follow">
@@ -66,7 +72,7 @@
                              <ul class="offcanvas_main_menu">
                                  <li class="menu-item-has-children">
                                      <a href="{{ asset('theme/client/index.html')}}">Home</a>
-                                    
+
                                  </li>
                                  <li class="menu-item-has-children">
                                      <a href="#">Shop</a>
@@ -111,8 +117,8 @@
                                          <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
                                          <li><a href="blog-sidebar.html">blog sidebar</a></li>
                                      </ul> --}}
- 
-                                 </li> 
+
+                                 </li>
                                  <li class="menu-item-has-children">
                                      <a href="#">pages </a>
                                      <ul class="sub-menu">
@@ -140,59 +146,35 @@
                  </div>
              </div>
          </div>
- 
+
      </div>
      <!--Offcanvas menu area end-->
- 
+
      <!--slider area start-->
      <section class="slider_section slider_two mb-50">
+
          <div class="slider_area owl-carousel">
-             <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider10.jpg">
+            @foreach($banners as $item)
+             <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset(Storage::url($item->cover)) }}">
                  <div class="container">
                      <div class="row">
                          <div class="col-12">
                              <div class="slider_content">
-                                 <h2>Hight Quality</h2>
-                                 <h1>The Parts Of Shock Absorbers Assembly</h1>
+                                 {{-- <h2>Hight Quality</h2>
+                                 <h1>The Parts Of Shock Absorbers Assembly</h1> --}}
                                  <a class="button" href="shop.html">shopping now</a>
                              </div>
                          </div>
                      </div>
                  </div>
- 
+
              </div>
-             <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider11.jpg">
-                 <div class="container">
-                     <div class="row">
-                         <div class="col-12">
-                             <div class="slider_content">
-                                 <h2>Special Offer</h2>
-                                 <h1>Get &250 In Total Discount On A New Set Of Tries</h1>
-                                 <a class="button" href="shop.html">shopping now</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
- 
-             </div>
-             <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider12.jpg">
-                 <div class="container">
-                     <div class="row">
-                         <div class="col-12">
-                             <div class="slider_content">
-                                 <h2>HP Racer Skutex</h2>
-                                 <h1>Feel The Greatest Oil Power With Best One Oil</h1>
-                                 <a class="button" href="shop.html">shopping now</a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
- 
-             </div>
+            @endforeach
          </div>
+
      </section>
      <!--slider area end-->
- 
+
      <!--banner area start-->
      <section class="banner_area mb-50">
          <div class="container">
@@ -201,20 +183,18 @@
                      <div class="banner_container">
                          <div class="single_banner">
                              <div class="banner_thumb">
-                                 <a href="shop.html"><img src="{{ asset('theme/client/assets/img/bg/banner3.jpg')}}" alt=""></a>
+                                 <a href="shop.html"><img src="{{ asset('theme/client/assets/img/bg/banner002.jpg')}}" alt=""></a>
                                  <div class="banner_text">
-                                     <h3>Car Audio</h3>
-                                     <h2>Super Natural Sound</h2>
+                                   
                                      <a href="shop.html">Shop Now</a>
                                  </div>
                              </div>
                          </div>
                          <div class="single_banner">
                              <div class="banner_thumb">
-                                 <a href="shop.html"><img src="{{ asset('theme/clent/assets/img/bg/banner4.jpg')}}" alt=""></a>
+                                 <a href="shop.html"><img src="{{ asset('theme/client/assets/img/bg/banner_ADIDAS.webp')}}" alt=""></a>
                                  <div class="banner_text">
-                                     <h3>All - New</h3>
-                                     <h2>Perfomance Parts</h2>
+                                   
                                      <a href="shop.html">Shop Now</a>
                                  </div>
                              </div>
@@ -225,14 +205,14 @@
          </div>
      </section>
      <!--banner area end-->
- 
+
      <!--product area start-->
      <section class="product_area mb-50">
          <div class="container">
              <div class="row">
                  <div class="col-12">
                      <div class="section_title">
-                         <h2><span> <strong>Special</strong>Offers</span></h2>
+                         <h2><span> <strong>Sale</strong>Offers</span></h2>
                      </div>
                      <div class="product_carousel product_column4 owl-carousel">
                         @foreach($products as $item)
@@ -267,11 +247,11 @@
                                     </ul>
                                 </div>
                                 <div class="product_footer d-flex align-items-center">
-                                    <div class="price_box">
-                                        <span class="regular_price">{{ $item->price }}</span>
+                                    <div class="">
+                                        <span class="" style="text-decoration-line: line-through">{{ $item->price }}VND</span>
                                     </div>
                                     <div class="price_box">
-                                        <span class="regular_price">{{ $item->price_sale }}</span>
+                                        <span class="regular_price" style="color: red">{{ $item->price_sale }}VND</span>
                                     </div>
                                     <div class="add_to_cart">
                                         <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
@@ -287,44 +267,44 @@
                             </div>
                         </div>
                          @endforeach
-                    
-               
+
+
                      </div>
                  </div>
              </div>
- 
+
          </div>
      </section>
      <!--product area end-->
- 
+
      <!--featured categories area start-->
      <section class="featured_categories featured_c_four  mb-50">
          <div class="container">
              <div class="row">
                  <div class="col-12">
                      <div class="section_title">
-                         <h2><span> <strong>Danh</strong>Mục</span></h2>
+                         <h2><span> Category</span></h2>
                      </div>
                      <div class="product_carousel featured_four  product_column5 owl-carousel">
-                        @foreach($products as $item)
+                        @foreach(App\Models\Category::query()->get() as $item)
                       <div class="single_featured">
                              <div class="featured_thumb">
-                                 <a href="#"><img src="{{$item->category->cover}}" alt=""></a>
+                                <a class="primary_img" href="{{ route('client.show',$item->id) }}"><img src="{{Storage::url($item->cover)}}"  alt=""></a>
                              </div>
                              <div class="featured_content">
-                                 <h3 class="product_name"><a href="#">{{ $item->category->name }}</a></h3>
+                                 <h3 class="product_name"><a href="#">{{ $item->name }}</a></h3>
                                  <a class="view_more" href="#">shop now</a>
                              </div>
                          </div>
                          @endforeach
-        
+
                      </div>
                  </div>
              </div>
          </div>
      </section>
      <!--featured categories area end-->
- 
+
      <!--product area start-->
      <section class="product_area mb-50">
          <div class="container">
@@ -346,7 +326,7 @@
                                  <div class="label_product">
                                      <span class="label_sale">-57%</span>
                                  </div>
- 
+
                                  <div class="action_links">
                                      <ul>
                                          <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
@@ -367,7 +347,7 @@
                                  </div>
                                  <div class="product_footer d-flex align-items-center">
                                      <div class="price_box">
-                                         <span class="regular_price">{{ $item->price }}</span>
+                                         <span class="regular_price">{{ $item->price }}VND</span>
                                      </div>
                                      <div class="add_to_cart">
                                          <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
@@ -379,20 +359,20 @@
                       </div>
                  </div>
              </div>
- 
+
          </div>
      </section>
      <!--product area end-->
- 
+
      <!--banner area start-->
-     <section class="banner_area banner_static mb-50 d-flex align-items-center" data-bgimg="assets/img/bg/banner7.jpg">
+     <section class="banner_area banner_static mb-50 d-flex align-items-center" data-bgimg="{{ asset('theme/client/assets/img/bg/banner001.jpg')}}">
          <div class="container">
              <div class="row">
                  <div class="col-12">
                      <div class="banner_text">
-                         <h2>Automotive Led</h2>
+                         {{-- <h2>Automotive Led</h2>
                          <h1>Headlight Kits</h1>
-                         <p>HVC brings you only the best quality headlight kits</p>
+                         <p>HVC brings you only the best quality headlight kits</p> --}}
                          <a href="shop.html">Discover Now</a>
                      </div>
                  </div>
@@ -400,11 +380,11 @@
          </div>
      </section>
      <!--banner area end-->
- 
+
      <!--product area start-->
 
      <!--product area end-->
- 
+
      <!--brand area start-->
      <div class="brand_area mb-42">
          <div class="container">
@@ -435,7 +415,7 @@
          </div>
      </div>
      <!--brand area end-->
- 
+
      <!--blog area start-->
      <section class="blog_section mb-50">
          <div class="container">
@@ -535,8 +515,8 @@
          </div>
      </section>
      <!--blog area end-->
-     
- 
+
+
      <!--call to action start-->
      <section class="call_to_action">
          <div class="container">
@@ -564,5 +544,5 @@
          </div>
      </section>
      <!--call to action end-->
- 
+
 @endsection

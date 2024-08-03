@@ -15,11 +15,16 @@
             <div class="col-lg-6 col-md-6">
                 <div class="top_right text-end">
                     <ul>
-                        <li class="top_links"><a href="#"><i class="ion-android-person"></i> My Account<i class="ion-ios-arrow-down"></i></a>
+                        <li class="top_links">
+                            @if (Auth::check())
+                            <a href=""><i class="ion-android-person"></i> {{ Auth::user()->name }}<i class="ion-ios-arrow-down"></i></a>  
+                          @else
+                          <a href="{{ route('login') }}"><i class="ion-android-person"></i> Login<i class="ion-ios-arrow-down"></i></a>
+                          @endif
                             <ul class="dropdown_links">
-                                <li><a href="{{ asset('theme/client/checkout.html') }}">Checkout </a></li>
+                                <li><a href="{{ route('logout') }}">Checkout </a></li>
                                 <li><a href="{{ asset('theme/client/my-account.html') }}">My Account </a></li>
-                                <li><a href="{{ asset('theme/client/cart.html') }}">Shopping Cart</a></li>
+                                <li><a href="{{ route('cart.view') }}">Shopping Cart</a></li>
                                 <li><a href="{{ asset('theme/client/wishlist.html') }}">Wishlist</a></li>
                             </ul>
                         </li>
